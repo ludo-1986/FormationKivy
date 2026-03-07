@@ -1,3 +1,6 @@
+#:import utils kivy.utils
+
+
 <MainScreen>:
     md_bg_color: self.theme_cls.surfaceColor  # Change les couleur en fonction du style
 
@@ -13,9 +16,38 @@
             role: "small"
             
         MDButton:
-            style: "filled"
+            style: "elevated"
             pos_hint: {'center_x': 0.5}
             on_release: root.clickButton()
 
             MDButtonText:
                 text: "Valider l'étape"
+            
+        MDButton:
+            style: "filled"
+            pos_hint: {'center_x': 0.5}
+            on_release: root.otherButton()
+            theme_bg_color: "Custom"
+            md_bg_color: "darkgreen" if app.theme_cls.theme_style == "Light" else "lightgreen"
+
+            MDButtonText:
+                text: "Nouvelle phrase"
+                theme_text_color: "Custom"
+                text_color: "lightgreen" if app.theme_cls.theme_style == "Light" else "darkgreen"
+            
+        MDButton:
+            style: "tonal"
+            pos_hint: {'center_x': 0.5}
+            on_release: app.changeStyle()
+            theme_bg_color: "Custom"
+            md_bg_color: utils.get_color_from_hex("#140787") if app.theme_cls.theme_style == "Light" else utils.get_color_from_hex("#786bff")
+
+            MDButtonIcon:
+                icon: "white-balance-sunny" if app.theme_cls.theme_style == "Light" else "moon-waning-crescent"
+                theme_text_color: "Custom"
+                text_color: utils.get_color_from_hex("#d0d0d0") if app.theme_cls.theme_style == "Light" else utils.get_color_from_hex("#030824")
+
+            MDButtonText:
+                text: "Il fait jour" if app.theme_cls.theme_style == "Light" else "Il fait nuit"
+                theme_text_color: "Custom"
+                text_color: utils.get_color_from_hex("#d0d0d0") if app.theme_cls.theme_style == "Light" else utils.get_color_from_hex("#030824")

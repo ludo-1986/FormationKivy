@@ -9,6 +9,10 @@ class MainScreen(MDScreen):
         
         print("Bonjour, Le bouton fonctionne")
         
+    def otherButton(self):
+        
+        print("Le deuxième bouton fonctionne !!!")
+        
         
 class MainApp(MDApp):
     
@@ -22,6 +26,12 @@ class MainApp(MDApp):
         
         # on renvois l'écran
         return MainScreen()
+    
+    def changeStyle(self):
+        
+        style = self.theme_cls.theme_style
+        
+        self.theme_cls.theme_style = "Light" if style == "Dark" else "Dark"
         
         
 if __name__ == "__main__":
